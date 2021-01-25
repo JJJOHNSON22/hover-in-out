@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hover In & Out</title>
+    <style>
+        img {
+            margin-left: auto;
+            margin-right: auto;
+            width: 24%;
+            display: inline-block;
+        }
+        
+        h1 {
+            text-align: center;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+</head>
+
+<body>
+    <h1>jQuery - Hover In & Out</h1>
+    <img src="images/adventure-cat.png" alt="images/aidorucat.png">
+    <img src="images/chellocat.jpg" alt="images/cherry.jpg">
+    <img src="images/coder2.jpg" alt="images/codercat.jpg">
+    <img src="images/daftpunk.gif" alt="images/defunktocat.png">
+    <script>
+        $("#slice0 img").hover(function() {
+            $("#slice4 img").toggle();
+        }, function() {
+            $("#slice0 img").toggle();
+        });
+        $('img').hover(function() {
+            //Switching img src with alt
+            var src = $(this).attr('src');
+            var alt = ($(this).attr('src') === $(this).attr('src')) ?
+                $(this).attr('alt') :
+                $(this).attr('src');
+            //Log replacement img in console
+            console.log(alt);
+            //Adds fading animation for viewing pleasure
+            $(this).fadeTo('fast', 0, function() {
+                $(this).attr('alt', src).fadeTo('fast', 1);
+                $(this).attr('src', alt);
+            });
+        });
+    </script>
+
+</body>
+
+</html>
